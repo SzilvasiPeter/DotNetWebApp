@@ -16,5 +16,6 @@ namespace DotNetWebApp.Models
 
         [Column(TypeName = "decimal(18, 2)")]
         public decimal Price { get; set; }
+        public double Rating { get; set; }
     }
 }
