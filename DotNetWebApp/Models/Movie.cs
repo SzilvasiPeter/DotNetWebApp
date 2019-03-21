@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DotNetWebApp.Models
 {
-    public class Movie
+    public class Movie : IValidatableObject
     {
         public int ID { get; set; }
 
@@ -25,11 +25,41 @@ namespace DotNetWebApp.Models
 
         //[RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$", ErrorMessage = "Genre has to be start with upper-case letter")]
         [Required]
-        //[StringLength(30)]
-        public Genre Genre { get; set; }
+        [StringLength(11)]
+        //[GenreExpression]
+        public String Genre { get; set; }
 
         [Range(0,5)]
         [Required]
         public double Rating { get; set; }
+
+        [NotMapped]
+        public Genre GenreEnum
+        {
+            get
+            {
+                Genre genre;
+                Enum.TryParse<Genre>(Genre, out genre);
+                return genre;
+            }
+        }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            Genre genreValue;
+            if(Enum.TryParse(Genre, true, out genreValue))
+            {
+                if(!(Enum.IsDefined(typeof(Genre), genreValue) | genreValue.ToString().Contains(",")))
+                {
+                    yield return new ValidationResult($"Not valid Genre type: {Genre}", new[] {"Movie.Genre"});
+                }
+            }else
+            {
+                yield return new ValidationResult($"Not valid Genre type: {Genre}", new[] {"Movie.Genre"});
+            }
+
+        }
+
+        
     }
 }

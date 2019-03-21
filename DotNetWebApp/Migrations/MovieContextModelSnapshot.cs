@@ -21,7 +21,8 @@ namespace DotNetWebApp.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("Genre");
+                    b.Property<string>("Genre")
+                        .IsRequired();
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18, 2)");
