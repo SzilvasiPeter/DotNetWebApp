@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -22,10 +23,10 @@ namespace DotNetWebApp.Models
         [Column(TypeName = "decimal(18, 2)")]
         public decimal Price { get; set; }
 
-        [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
+        //[RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$", ErrorMessage = "Genre has to be start with upper-case letter")]
         [Required]
-        [StringLength(30)]
-        public string Genre { get; set; }
+        //[StringLength(30)]
+        public Genre Genre { get; set; }
 
         [Range(0,5)]
         [Required]
