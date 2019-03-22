@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using DotNetWebApp.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace DotNetWebApp.Pages.Movies
 {

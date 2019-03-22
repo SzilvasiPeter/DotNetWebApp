@@ -16,7 +16,7 @@ namespace DotNetWebApp.Migrations
                     Title = table.Column<string>(maxLength: 60, nullable: false),
                     ReleaseDate = table.Column<DateTime>(nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
-                    Genre = table.Column<string>(nullable: false),
+                    Genre = table.Column<int>(nullable: false),
                     Rating = table.Column<double>(nullable: false)
                 },
                 constraints: table =>

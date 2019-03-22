@@ -23,26 +23,29 @@ namespace DotNetWebApp.Models
         [Column(TypeName = "decimal(18, 2)")]
         public decimal Price { get; set; }
 
-        [RegularExpression(@"^[A-Z]*$", ErrorMessage = "Make sure that all letter is upper-case.")]
+        //[RegularExpression(@"^[A-Z]*$", ErrorMessage = "Make sure that all letter is upper-case.")]
+        // [Required]
+        // [StringLength(11)]
+        // [GenreExpression]
+        // public String Genre { get; set; }
+
         [Required]
-        [StringLength(11)]
-        [GenreExpression]
-        public String Genre { get; set; }
+        public Genre Genre { get; set; }
 
         [Range(0,5)]
         [Required]
         public double Rating { get; set; }
 
-        [NotMapped]
-        public Genre GenreEnum
-        {
-            get
-            {
-                Genre genre;
-                Enum.TryParse<Genre>(Genre, out genre);
-                return genre;
-            }
-        }
+        // [NotMapped]
+        // public Genre GenreEnum
+        // {
+        //     get
+        //     {
+        //         Genre genre;
+        //         Enum.TryParse<Genre>(Genre, out genre);
+        //         return genre;
+        //     }
+        // }
 
         // Class level validation
         // public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

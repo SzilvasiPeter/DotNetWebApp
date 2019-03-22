@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DotNetWebApp.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    [Migration("20190321153651_InitialCreate")]
+    [Migration("20190322153416_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,8 +23,7 @@ namespace DotNetWebApp.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Genre")
-                        .IsRequired();
+                    b.Property<int>("Genre");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18, 2)");

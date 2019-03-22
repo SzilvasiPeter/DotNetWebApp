@@ -24,10 +24,12 @@
                 <span asp-validation-for="Movie.ReleaseDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Movie.Genre" class="control-label"></label>
+                <select asp-for="Movie.Genre" asp-items="Html.GetEnumSelectList<DotNetWebApp.Models.Genre>()">
+                    <option selected="selected" value="">Please select the Genre</option>
+                </select>
+                <!-- <label asp-for="Movie.Genre" class="control-label"></label>
                 <input asp-for="Movie.Genre" class="form-control" />
-                <span asp-validation-for="Movie.Genre" class="text-danger"></span>
-                
+                <span asp-validation-for="Movie.Genre" class="text-danger"></span> -->
             </div>
             <div class="form-group">
                 <label asp-for="Movie.Price" class="control-label"></label>

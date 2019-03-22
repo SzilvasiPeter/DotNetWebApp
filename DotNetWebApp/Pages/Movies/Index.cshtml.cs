@@ -26,12 +26,14 @@ namespace DotNetWebApp.Pages.Movies
         public SelectList Genres { get; set; }
         
         [BindProperty(SupportsGet = true)]
-        public String MovieGenre { get; set; }
+        public Genre MovieGenre { get; set; }
         public async Task OnGetAsync()
         {
             // IQueryable<string> genreQuery = from m in _context.Movie orderby m.Genre select m.Genre;
 
-            var genreQuery = from m in _context.Movie where m.GenreEnum > 0 select m.Genre;
+            // var genreQuery = from m in _context.Movie where m.GenreEnum > 0 select m.Genre;
+
+            var genreQuery = from m in _context.Movie where m.Genre > 0 select m.Genre;
             
             var movies = from m in _context.Movie select m;
 
@@ -40,7 +42,7 @@ namespace DotNetWebApp.Pages.Movies
                 movies = movies.Where(s => s.Title.Contains(SearchString));
             }
 
-            if(!string.IsNullOrEmpty(MovieGenre))
+            if(MovieGenre != 0)
             {
                 movies = movies.Where(x => x.Genre == MovieGenre);
             }
