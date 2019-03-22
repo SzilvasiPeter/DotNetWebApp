@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DotNetWebApp.Models
 {
-    public class Movie : IValidatableObject
+    public class Movie //: IValidatableObject
     {
         public int ID { get; set; }
 
@@ -23,10 +23,10 @@ namespace DotNetWebApp.Models
         [Column(TypeName = "decimal(18, 2)")]
         public decimal Price { get; set; }
 
-        //[RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$", ErrorMessage = "Genre has to be start with upper-case letter")]
+        [RegularExpression(@"^[A-Z]*$", ErrorMessage = "Make sure that all letter is upper-case.")]
         [Required]
         [StringLength(11)]
-        //[GenreExpression]
+        [GenreExpression]
         public String Genre { get; set; }
 
         [Range(0,5)]
@@ -44,21 +44,27 @@ namespace DotNetWebApp.Models
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            Genre genreValue;
-            if(Enum.TryParse(Genre, true, out genreValue))
-            {
-                if(!(Enum.IsDefined(typeof(Genre), genreValue) | genreValue.ToString().Contains(",")))
-                {
-                    yield return new ValidationResult($"Not valid Genre type: {Genre}", new[] {"Movie.Genre"});
-                }
-            }else
-            {
-                yield return new ValidationResult($"Not valid Genre type: {Genre}", new[] {"Movie.Genre"});
-            }
-
-        }
+        // Class level validation
+        // public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        // {
+        //     Genre genreValue;
+        //     var result = new List<ValidationResult>();
+        //     var isValid = Enum.TryParse(Genre, true, out genreValue);
+        //     if(!isValid)
+        //     {
+        //         // yield return new ValidationResult($"Not valid Genre type: {Genre}", new[] {"Movie.Genre"});
+        //         result.Add(new ValidationResult("Not valid Genre Name"));
+        //         return result;
+        //         // if(!(Enum.IsDefined(typeof(Genre), genreValue) | genreValue.ToString().Contains(",")))
+        //         // {
+        //         //     yield return new ValidationResult($"Not valid Genre type: {Genre}", new[] {"Movie.Genre"});
+        //         // }
+        //     }else
+        //     {
+        //         Enum.TryParse(Genre, true, out genreValue);
+        //         return result;
+        //     }
+        // }
 
         
     }
