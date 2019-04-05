@@ -1,0 +1,74 @@
+// Adatbázis elkészítéséhez szügséges.
+Migrations
+	// Az adatbázis vázának felépítéséhez szükséges. Itt meg lehet változtani a mezők nevét.
+	MovieContextModelSnapshot.cs
+
+	// Felépíti az adatbázis vázat.
+	// A felépítését nem lehet megváltoztatni, emiatt törölni kell a meglévő adatbázist és újralétrehozni (és újramigrálni) szükséges.
+	20190322153416_InitialCreate.Designer.cs
+
+	// Az adatbázis készíte el (generált kód). A mezőket SQL típusokra (int, decimal, string, dateTime...) konvertálja.
+	20190322153416_InitialCreate.cs
+
+// A model elkészítése
+	Model
+	// Model, ami egy mozi filmet reprezentál.
+	// Adattagjai: Cím (string), Kiadás dátuma (DateTime), Ára (decimal), Műfaja (Genre), Értékelése (double)
+	// Validáció: [Required] - szükséges megadni, [Display] - Mit jelenít meg a weboldal (View),
+	// [StringLength] - szöveg hossza, [DataType] - adattípus ellenőrzés, [DisplayFormat] - megjelenítési formátum,  
+	Movie.cs
+
+	// Enum (felsorolás típusú) osztály. Ez tartalmazza a műfajokat.
+	Genre.cs
+
+
+	// Adatbázis legenerálásához szükséges
+	MovieContext.cs
+
+	// Ha még üres az adatbázis, akkor feltölti az adatbázisunkat.
+	SeedData.cs
+
+	// Kitörölheted!
+	GenreExpression.cs
+
+// HTML (View) HTMl-hez tartozó eseménykezelők (.cs - Controller)
+Pages
+	Index.cshtml - Kezdő oldal. Mozgó kép (carousel), 4 kép, 4 leírás. Index.cshtml.cs a hozzátartozó eseménykezelő (Controller).
+	About.cshtml - Az about oldal. Sima leírás, linekek a közösségi oldalaimhoz. Hozzáratozó eseménykezelő (Controller) About.cshtml.cs.
+	Error.cshtml - Egyszerű hiba oldal. A /Error útvonalol lehet elérni. Lekezelője Error.cshtml.cs
+	
+	// Megosztott html-ek
+	Shared 
+		_CookieConsentPartial.cshtml - Cookie használatához.
+		_ValidationScriptsPartial.cshtml - Linkek a validáció (jquery).
+		_Layout.cshtml - Navigációs menü. Lábjegyzet
+	
+	Movies
+		Index.cshtml - Mozik megjelenítése. Linkek a mozi létrehozáshoz, módosításhoz, törléséhez, leírásához. Kersés címre, szűrés műfajra. Hozzátartozó Controller Index.cshtml.cs.
+		Create.cshtml - Mozi létrehozása. Form használata és ellenőrzés (validáció) használata. Hozzátartozó Controller.cshtml.cs
+		Edit.cshtml - A mozi módosítása. Form használat és ellenőrzéssel. Hozzátartozó Controller Edit.cshtml.cs.
+		Delete.cshtml - A mozi törlése. Hozzátartozó Controller Delete.cshtml.cs
+		Details.cshtml - Mozi leírása. Hozzátartozó Controller Details.cshtml.cs
+		
+
+
+
+
+// Statikus fájlok
+wwwroot
+	css - megjelenítés
+	js - dinamikusság
+	images - képek
+	lib - bootstrap (css) és jquery (js)
+
+// Elínditja a weboldalt
+Program.cs
+
+
+// Inicializálja a weboldalt
+Startup.cs
+
+// Adatbázis
+MvcMovie.db
+
+
